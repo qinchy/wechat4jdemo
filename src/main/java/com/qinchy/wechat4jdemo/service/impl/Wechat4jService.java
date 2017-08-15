@@ -153,7 +153,7 @@ public class Wechat4jService extends WechatSupport {
     @Override
     protected void scanCodeWaitMsg() {
         String msgType = super.wechatRequest.getMsgType();
-        String scanResult = super.wechatRequest.getScanCodeInfo().getScanResult()
+        String scanResult = super.wechatRequest.getScanCodeInfo().getScanResult();
         responseText("你的消息已经收到！消息类型：" + msgType + "，消息内容是：" + scanResult);
     }
 
