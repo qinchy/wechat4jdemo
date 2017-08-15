@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @RestController
-@RequestMapping(path = "/Wechat4jServlet")
+@RequestMapping(path = "/WechatServlet")
 public class Wechat4jController {
 
     Logger log = LoggerFactory.getLogger(Wechat4jController.class);
