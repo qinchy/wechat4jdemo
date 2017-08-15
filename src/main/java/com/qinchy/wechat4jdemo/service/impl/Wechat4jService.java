@@ -12,123 +12,214 @@ public class Wechat4jService extends WechatSupport {
 
     @Override
     protected void onText() {
-        responseText("hello world!");
+        String msgType = super.wechatRequest.getMsgType();
+        String msgContent = super.wechatRequest.getContent();
+        responseText("你的消息已经收到！消息类型：" + msgType + "，消息内容是：" + msgContent);
     }
 
     @Override
     protected void onImage() {
-        responseImage("");
+        String msgContent = super.wechatRequest.getMediaId();
+        responseImage(msgContent);
     }
 
     @Override
     protected void onVoice() {
-        responseVoice("");
+        String msgContent = super.wechatRequest.getMediaId();
+        responseVoice(msgContent);
     }
 
     @Override
     protected void onVideo() {
-        responseVideo("","title","description");
+        String msgContent = super.wechatRequest.getMediaId();
+        String title = super.wechatRequest.getTitle();
+        String description = super.wechatRequest.getDescription();
+        responseVideo(msgContent, title, description);
     }
 
     @Override
     protected void onShortVideo() {
-        responseVideo("","title","description");
+        responseVideo("", "title", "description");
     }
 
     @Override
     protected void onLocation() {
-        responseText("hello world!");
+        String msgType = super.wechatRequest.getMsgType();
+        String msgContent = super.wechatRequest.getLabel();
+        responseText("你的消息已经收到！消息类型：" + msgType + "，消息内容是：" + msgContent);
     }
 
     @Override
     protected void onLink() {
-        responseText("hello world!");
+        String msgType = super.wechatRequest.getMsgType();
+        String msgContent = super.wechatRequest.getUrl();
+        responseText("你的消息已经收到！消息类型：" + msgType + "，消息内容是：" + msgContent);
     }
 
     @Override
     protected void onUnknown() {
-        responseText("未知的消息类型");
+        responseText("未知的消息类型！");
     }
 
     // 以下是事件
 
+    /**
+     * 菜单 - 点击菜单拉取消息
+     */
     @Override
     protected void click() {
-        responseText("菜单 - 点击菜单拉取消息");
+        String msgType = super.wechatRequest.getMsgType();
+        String msgContent = super.wechatRequest.getMediaId();
+        responseText("你的消息已经收到！消息类型：" + msgType + "，消息内容是：" + msgContent);
     }
 
+    /**
+     * 订阅
+     */
     @Override
     protected void subscribe() {
-        responseText("订阅");
+        String msgType = super.wechatRequest.getMsgType();
+        String msgContent = super.wechatRequest.getMediaId();
+        responseText("你的消息已经收到！消息类型：" + msgType + "，消息内容是：" + msgContent);
     }
 
+    /**
+     * 取消订阅
+     */
     @Override
     protected void unSubscribe() {
-        responseText("取消订阅");
+        String msgType = super.wechatRequest.getMsgType();
+        String msgContent = super.wechatRequest.getMediaId();
+        responseText("你的消息已经收到！消息类型：" + msgType + "，消息内容是：" + msgContent);
     }
 
+    /**
+     * 扫描带参数二维码
+     */
     @Override
     protected void scan() {
-        responseText("扫描带参数二维码");
+        String msgType = super.wechatRequest.getMsgType();
+        String msgContent = super.wechatRequest.getMediaId();
+        responseText("你的消息已经收到！消息类型：" + msgType + "，消息内容是：" + msgContent);
     }
 
+    /**
+     * 上报地理位置
+     */
     @Override
     protected void location() {
-        responseText("上报地理位置");
+        String msgType = super.wechatRequest.getMsgType();
+        String msgContent = super.wechatRequest.getMediaId();
+        responseText("你的消息已经收到！消息类型：" + msgType + "，消息内容是：" + msgContent);
     }
 
+    /**
+     * 菜单 - 点击菜单跳转链接
+     */
     @Override
     protected void view() {
-        responseText("菜单 - 点击菜单跳转链接");
+        String msgType = super.wechatRequest.getMsgType();
+        String msgContent = super.wechatRequest.getMediaId();
+        responseText("你的消息已经收到！消息类型：" + msgType + "，消息内容是：" + msgContent);
     }
 
+    /**
+     * 发送结果 - 模板消息发送结果
+     */
     @Override
     protected void templateMsgCallback() {
-        responseText("发送结果 - 模板消息发送结果");
+        String msgType = super.wechatRequest.getMsgType();
+        String msgContent = super.wechatRequest.getMediaId();
+        responseText("你的消息已经收到！消息类型：" + msgType + "，消息内容是：" + msgContent);
     }
 
+    /**
+     * 菜单 - 扫码推事件(客户端跳URL)
+     */
     @Override
     protected void scanCodePush() {
-        responseText("菜单 - 扫码推事件(客户端跳URL)");
+        String msgType = super.wechatRequest.getMsgType();
+        String msgContent = super.wechatRequest.getMediaId();
+        responseText("你的消息已经收到！消息类型：" + msgType + "，消息内容是：" + msgContent);
     }
 
+    /**
+     * 菜单 - 扫码推事件(客户端不跳URL)
+     */
     @Override
     protected void scanCodeWaitMsg() {
-        responseText("菜单 - 扫码推事件(客户端不跳URL)");
+        String msgType = super.wechatRequest.getMsgType();
+        String msgContent = super.wechatRequest.getMediaId();
+        responseText("你的消息已经收到！消息类型：" + msgType + "，消息内容是：" + msgContent);
     }
 
+    /**
+     * 菜单 - 弹出系统拍照发图
+     */
     @Override
     protected void picSysPhoto() {
-        responseText("菜单 - 弹出系统拍照发图");
+        String msgType = super.wechatRequest.getMsgType();
+        String msgContent = super.wechatRequest.getMediaId();
+        responseText("你的消息已经收到！消息类型：" + msgType + "，消息内容是：" + msgContent);
     }
 
+    /**
+     * 菜单 - 弹出拍照或者相册发图
+     */
     @Override
     protected void picPhotoOrAlbum() {
-        responseText("菜单 - 弹出拍照或者相册发图");
+        String msgType = super.wechatRequest.getMsgType();
+        String msgContent = super.wechatRequest.getMediaId();
+        responseText("你的消息已经收到！消息类型：" + msgType + "，消息内容是：" + msgContent);
     }
 
+    /**
+     * 菜单 - 弹出微信相册发图器
+     */
     @Override
     protected void picWeixin() {
-        responseText("菜单 - 弹出微信相册发图器");
+        String msgType = super.wechatRequest.getMsgType();
+        String msgContent = super.wechatRequest.getMediaId();
+        responseText("你的消息已经收到！消息类型：" + msgType + "，消息内容是：" + msgContent);
     }
 
+    /**
+     * 菜单 - 弹出地理位置选择器
+     */
     @Override
     protected void locationSelect() {
-        responseText("菜单 - 弹出地理位置选择器");
+        String msgType = super.wechatRequest.getMsgType();
+        String msgContent = super.wechatRequest.getMediaId();
+        responseText("你的消息已经收到！消息类型：" + msgType + "，消息内容是：" + msgContent);
     }
 
+    /**
+     * 多客服 - 接入会话
+     */
     @Override
     protected void kfCreateSession() {
-        responseText("多客服 - 接入会话");
+        String msgType = super.wechatRequest.getMsgType();
+        String msgContent = super.wechatRequest.getMediaId();
+        responseText("你的消息已经收到！消息类型：" + msgType + "，消息内容是：" + msgContent);
     }
 
+    /**
+     * 多客服 - 关闭会话
+     */
     @Override
     protected void kfCloseSession() {
-        responseText("多客服 - 关闭会话");
+        String msgType = super.wechatRequest.getMsgType();
+        String msgContent = super.wechatRequest.getMediaId();
+        responseText("你的消息已经收到！消息类型：" + msgType + "，消息内容是：" + msgContent);
     }
 
+    /**
+     * 多客服 - 转接会话
+     */
     @Override
     protected void kfSwitchSession() {
-        responseText("多客服 - 转接会话");
+        String msgType = super.wechatRequest.getMsgType();
+        String msgContent = super.wechatRequest.getMediaId();
+        responseText("你的消息已经收到！消息类型：" + msgType + "，消息内容是：" + msgContent);
     }
 }
