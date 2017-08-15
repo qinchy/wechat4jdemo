@@ -1,8 +1,11 @@
 package com.qinchy.wechat4jdemo.service.impl;
 
+import org.apache.commons.lang3.StringUtils;
 import org.sword.wechat4j.WechatSupport;
+import org.sword.wechat4j.request.Item;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 public class Wechat4jService extends WechatSupport {
 
@@ -69,8 +72,8 @@ public class Wechat4jService extends WechatSupport {
     @Override
     protected void click() {
         String msgType = super.wechatRequest.getMsgType();
-        String msgContent = super.wechatRequest.getMediaId();
-        responseText("你的消息已经收到！消息类型：" + msgType + "，消息内容是：" + msgContent);
+        String eventKey = super.wechatRequest.getEventKey();
+        responseText("你的消息已经收到！消息类型：" + msgType + "，消息内容是：" + eventKey);
     }
 
     /**
@@ -79,8 +82,8 @@ public class Wechat4jService extends WechatSupport {
     @Override
     protected void subscribe() {
         String msgType = super.wechatRequest.getMsgType();
-        String msgContent = super.wechatRequest.getMediaId();
-        responseText("你的消息已经收到！消息类型：" + msgType + "，消息内容是：" + msgContent);
+        String event = super.wechatRequest.getEvent();
+        responseText("你的消息已经收到！消息类型：" + msgType + "，消息内容是：" + event);
     }
 
     /**
@@ -89,8 +92,8 @@ public class Wechat4jService extends WechatSupport {
     @Override
     protected void unSubscribe() {
         String msgType = super.wechatRequest.getMsgType();
-        String msgContent = super.wechatRequest.getMediaId();
-        responseText("你的消息已经收到！消息类型：" + msgType + "，消息内容是：" + msgContent);
+        String event = super.wechatRequest.getEvent();
+        responseText("你的消息已经收到！消息类型：" + msgType + "，消息内容是：" + event);
     }
 
     /**
@@ -99,8 +102,8 @@ public class Wechat4jService extends WechatSupport {
     @Override
     protected void scan() {
         String msgType = super.wechatRequest.getMsgType();
-        String msgContent = super.wechatRequest.getMediaId();
-        responseText("你的消息已经收到！消息类型：" + msgType + "，消息内容是：" + msgContent);
+        String eventKey = super.wechatRequest.getEventKey();
+        responseText("你的消息已经收到！消息类型：" + msgType + "，消息内容是：" + eventKey);
     }
 
     /**
@@ -109,8 +112,9 @@ public class Wechat4jService extends WechatSupport {
     @Override
     protected void location() {
         String msgType = super.wechatRequest.getMsgType();
-        String msgContent = super.wechatRequest.getMediaId();
-        responseText("你的消息已经收到！消息类型：" + msgType + "，消息内容是：" + msgContent);
+        String latitude = super.wechatRequest.getLatitude();
+        String longitude = super.wechatRequest.getLongitude();
+        responseText("你的消息已经收到！消息类型：" + msgType + "，消息内容是：纬度：" + latitude + ",精度:" + longitude);
     }
 
     /**
@@ -119,8 +123,8 @@ public class Wechat4jService extends WechatSupport {
     @Override
     protected void view() {
         String msgType = super.wechatRequest.getMsgType();
-        String msgContent = super.wechatRequest.getMediaId();
-        responseText("你的消息已经收到！消息类型：" + msgType + "，消息内容是：" + msgContent);
+        String eventKey = super.wechatRequest.getEventKey();
+        responseText("你的消息已经收到！消息类型：" + msgType + "，消息内容是：" + eventKey);
     }
 
     /**
@@ -149,8 +153,8 @@ public class Wechat4jService extends WechatSupport {
     @Override
     protected void scanCodeWaitMsg() {
         String msgType = super.wechatRequest.getMsgType();
-        String msgContent = super.wechatRequest.getMediaId();
-        responseText("你的消息已经收到！消息类型：" + msgType + "，消息内容是：" + msgContent);
+        String scanResult = super.wechatRequest.getScanCodeInfo().getScanResult()
+        responseText("你的消息已经收到！消息类型：" + msgType + "，消息内容是：" + scanResult);
     }
 
     /**
@@ -159,7 +163,12 @@ public class Wechat4jService extends WechatSupport {
     @Override
     protected void picSysPhoto() {
         String msgType = super.wechatRequest.getMsgType();
-        String msgContent = super.wechatRequest.getMediaId();
+        List<Item> items = super.wechatRequest.getSendPicsInfo().getItem();
+        StringBuffer sb = new StringBuffer();
+        for (Item item : items) {
+            sb.append(item.getPicMd5Sum()+"~");
+        }
+        String msgContent = sb.toString();
         responseText("你的消息已经收到！消息类型：" + msgType + "，消息内容是：" + msgContent);
     }
 
@@ -168,9 +177,7 @@ public class Wechat4jService extends WechatSupport {
      */
     @Override
     protected void picPhotoOrAlbum() {
-        String msgType = super.wechatRequest.getMsgType();
-        String msgContent = super.wechatRequest.getMediaId();
-        responseText("你的消息已经收到！消息类型：" + msgType + "，消息内容是：" + msgContent);
+        picSysPhoto();
     }
 
     /**
@@ -178,9 +185,7 @@ public class Wechat4jService extends WechatSupport {
      */
     @Override
     protected void picWeixin() {
-        String msgType = super.wechatRequest.getMsgType();
-        String msgContent = super.wechatRequest.getMediaId();
-        responseText("你的消息已经收到！消息类型：" + msgType + "，消息内容是：" + msgContent);
+        picSysPhoto();
     }
 
     /**
@@ -189,8 +194,8 @@ public class Wechat4jService extends WechatSupport {
     @Override
     protected void locationSelect() {
         String msgType = super.wechatRequest.getMsgType();
-        String msgContent = super.wechatRequest.getMediaId();
-        responseText("你的消息已经收到！消息类型：" + msgType + "，消息内容是：" + msgContent);
+        String label = super.wechatRequest.getLabel();
+        responseText("你的消息已经收到！消息类型：" + msgType + "，消息内容是：" + label);
     }
 
     /**
