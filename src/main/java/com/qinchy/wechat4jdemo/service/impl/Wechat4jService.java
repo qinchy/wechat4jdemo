@@ -1,6 +1,5 @@
 package com.qinchy.wechat4jdemo.service.impl;
 
-import org.apache.commons.lang3.StringUtils;
 import org.sword.wechat4j.WechatSupport;
 import org.sword.wechat4j.request.Item;
 
